@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem "mongoid", github: 'mongoid/mongoid'
 gem 'angularjs-rails'
+gem "omniauth", "~> 1.1.4"
+gem "omniauth-vkontakte", "~> 1.2.0"
 
 group :test, :development do
   gem 'thin'
