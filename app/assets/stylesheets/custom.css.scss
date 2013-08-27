@@ -1,0 +1,58 @@
+#main {
+  display: block;
+  padding-top: 100px;
+  h1 {
+    display: inline-block;
+    font-size: 90px;
+    padding: 0;
+  }
+
+  img {
+    vertical-align: text-bottom;
+  }
+
+  .description {
+    color: silver;
+    font-size: 30px;
+  }
+
+  .providers {
+    margin-top: 50px;
+    a {
+      width: 100px;
+    }
+  }
+}
+
+.tip {
+  margin: 20px 20px 20px 0px;
+  font-size: 12px;
+}
+
+
+.logo {
+  display: inline-block;
+  margin: 30px 0px 100px 0px;
+  font-size: 90px;
+  color: #333333;
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 0.7em;
+  border-bottom: 7px solid silver;
+  //text-shadow: -1px 0 #716b7a, 0 1px #716b7a, 1px 0 #716b7a, 0 -1px #716b7a;
+}
+
+.signin-info {
+  margin-top: 50px;
+  font-size: 15px;
+  color: #716b7a;
+}
+
+.signout-link {
+  margin-left: 50px;
+}
+
+.navbar-gray {
+  background-color: #f3f3f3;
+}

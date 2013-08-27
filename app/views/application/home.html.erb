@@ -1,0 +1,29 @@
+<% if current_user %>
+  <nav class='navbar navbar-default navbar-gray' role='navigation'>
+    <strong><%= link_to 'Game Room', root_path, class: 'navbar-brand' %></strong>
+    <ul class='nav navbar-nav navbar-right'>
+      <li>
+        <p class='navbar-text'>
+          Hi <%= current_user.name %>!
+          <%= link_to 'Sign out', signout_path, class: 'navbar-link signout-link' %>
+        </p>
+      </li>
+    </ul>
+  </nav>
+<% else %>
+  <main id='main'>
+    <div class='container'>
+      <h1>Game Room</h1>
+      <%= image_tag asset_path('beta.png'), size: '70x49' %>
+      <p class='description'>
+        Your new way to organize and play text roleplaying games
+      </p>
+      <p class='providers'>
+        <%= vk_login_link %>
+      </p>
+      <p class='tip text-muted'>
+        Sign in via provider
+      </p>
+    </div>
+  </main>
+<% end %>
