@@ -1,8 +1,9 @@
 class User
   include Mongoid::Document
-
   field :uid, type: String
   field :name, type: String
+
+  has_many :subscriptions, dependent: :destroy
 
   def self.find_or_create_by_auth_hash(auth_hash)
     user = User.where(uid: auth_hash[:uid]).first

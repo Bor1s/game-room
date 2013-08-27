@@ -25,14 +25,16 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem "mongoid", github: 'mongoid/mongoid'
+gem 'mongoid', github: 'mongoid/mongoid'
 gem 'angularjs-rails'
-gem "omniauth", "~> 1.1.4"
-gem "omniauth-vkontakte", "~> 1.2.0"
+gem 'omniauth', '~> 1.1.4'
+gem 'omniauth-vkontakte', '~> 1.2.0'
+gem 'cancan'
+gem 'angularjs-rails'
 
 group :test, :development do
   gem 'thin'
-  gem "rspec-rails"
+  gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'capybara'

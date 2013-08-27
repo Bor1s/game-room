@@ -1,0 +1,11 @@
+<div ng-app='main'>
+  <div ng-controller='RoomsCtrl'>
+
+    <ul>
+      <li ng-repeat='room in rooms'>{{room.title}} <%= button_tag 'x', 'ng-click' => 'drop(room._id)' %></li>
+    </ul>
+
+    <%= button_tag 'Create', 'ng-click' => 'create()' %>
+
+  </div>
+</div>

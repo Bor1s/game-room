@@ -10,13 +10,15 @@
       </li>
     </ul>
   </nav>
+
+  <%= render 'ng_app_body' %>
 <% else %>
   <main id='main'>
     <div class='container'>
       <h1>Game Room</h1>
       <%= image_tag asset_path('beta.png'), size: '70x49' %>
       <p class='description'>
-        Your new way to organize and play text roleplaying games
+        Your new way to master and play text-based games
       </p>
       <p class='providers'>
         <%= vk_login_link %>
