@@ -1,8 +1,18 @@
-@RoomsCtrl = ($scope, Room) ->
-  $scope.rooms = Room.query()
+@RoomsCtrl = ($scope, $http, Room) ->
+  $http({method: 'GET', url: '/rest/users'})
+    .success (data)->
+      $scope.currentUser = data
+      $scope.rooms = Room.query()
+      #TODO get subscriptions???
+    .error (data)->
+      console.log data
+
+  $scope.room =
+    title       : null
+    description : null
 
   $scope.create = ()->
-    Room.save({ title: 'foobar', description: 'foobar' }, (data)->
+    Room.save({ title: $scope.room.title, description: $scope.room.description }, (data)->
       $scope.rooms.push data
     )
 

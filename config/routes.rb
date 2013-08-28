@@ -7,6 +7,7 @@ GameRoom::Application.routes.draw do
   namespace :rest do
     constraints format: :json do
       resources :rooms
+      get 'users', to: 'users#get_current_user'
     end
   end
 
