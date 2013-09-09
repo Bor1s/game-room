@@ -7,6 +7,9 @@
           <%= drop_room_btn %>
         </li>
       </ul>
+      <ul class='pagination'>
+        <li ng-repeat='n in totalPages'><a ng-click="visitPage(n)">{{n}}</a></li>
+      </ul>
     </div>
 
     <div class='col-md-4 management-panel'>

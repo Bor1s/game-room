@@ -1,1 +1,1 @@
-angular.module('main', ['roomService'])
+angular.module('main', ['roomService', 'paginate'])

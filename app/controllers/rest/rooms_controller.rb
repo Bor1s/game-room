@@ -3,7 +3,9 @@ class Rest::RoomsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Room.all
+    rooms = Room.page(params[:page] || 1).per(3)
+    r = { rooms: rooms, total: rooms.total_pages }
+    respond_with r
   end
 
   def show
