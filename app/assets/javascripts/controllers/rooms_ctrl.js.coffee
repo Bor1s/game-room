@@ -1,14 +1,13 @@
 @RoomsCtrl = ($scope, $http, Room, Paginator) ->
-  $scope.paginator = Paginator.init(Room)
+  $scope.paginator = Paginator.init Room, 'rooms', (data, totalPages)->
+    $scope.rooms = data
+    $scope.totalPages = [1..totalPages]
 
   $http({method: 'GET', url: '/rest/users'})
     .success (data)->
       $scope.currentUser = data
       #TODO get subscriptions???
-      $scope.paginator.getPage(1, (data, totalPages)->
-        $scope.rooms = data
-        $scope.totalPages = [1..totalPages]
-      )
+      $scope.paginator.getPage(1)
     .error (data)->
       console.log data
 
@@ -19,6 +18,7 @@
   $scope.create = ()->
     Room.save({ title: $scope.room.title, description: $scope.room.description }, (data)->
       $scope.rooms.push data
+      $scope.paginator.getPage(1)
     )
 
   $scope.drop = (id)->
@@ -27,7 +27,4 @@
     )
 
   $scope.visitPage = (pageNumber)->
-    $scope.paginator.getPage(pageNumber, (data, total)->
-      $scope.rooms = data
-      $scope.total_rooms = [1...total]
-    )
+    $scope.paginator.getPage(pageNumber)

@@ -1,16 +1,17 @@
 angular.module('paginate', []).
   service 'Paginator', ->
-    that = @
-    # Init Paginator object with default values
-    that.init = (resource)->
-      that.resource = resource
-      that.root_key = "rooms"
-      that.page = 1
-      that
+    # Init Paginator object with default values and callback on
+    # success getPage result
+    @init = (resource, root_key, successCallback)=>
+      @resource = resource
+      @root_key = root_key
+      @page = 1
+      @successCallback = successCallback || ->
+      @
 
     # Ask Resource to fetch it's entries from the server.
     # On success - write entries in callback
-    that.getPage = (pageNumber, success)->
-      that.resource.query({page: pageNumber || that.page}, (data)->
-        success(data[that.root_key], data.total)
+    @getPage = (pageNumber)->
+      @resource.query({page: pageNumber || @page}, (data)=>
+        @successCallback(data[@root_key], data.total)
       )
