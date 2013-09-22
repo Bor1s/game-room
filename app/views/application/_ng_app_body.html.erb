@@ -2,11 +2,8 @@
 
   <div class='row'>
     <div class='col-md-8'>
-      <ul>
-        <li ng-repeat='room in rooms'>{{room.title}}
-          <%= drop_room_btn %>
-        </li>
-      </ul>
+      <%= render 'rooms' %>
+      <%= render 'paginator' %>
     </div>
 
     <div class='col-md-4 management-panel'>
@@ -20,7 +17,7 @@
           <%= label_tag 'description' %>
           <%= text_area_tag 'Description', '', id: 'description', class: 'form-control', rows: 3, placeholder: 'Room description', 'ng-model' => 'room.description' %>
         </div>
-        <%= button_tag 'Create Room', class: 'btn btn-default', 'ng-click' => 'create()' %>
+        <%= button_tag 'Create Room', class: 'btn btn-primary', 'ng-click' => 'create()' %>
       <% end %>
     </div>
   </div>

@@ -17,3 +17,5 @@
 
 # Ignore ctags file
 /.tags
+
+.DS_Store
