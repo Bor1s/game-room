@@ -1,6 +1,8 @@
 class Rest::RoomsController < ApplicationController
+  layout false
+  before_action :authenticate
   skip_before_action :verify_authenticity_token
-  respond_to :json
+  respond_to :html, :json
 
   def index
     rooms = Room.desc(:updated_at).page(params[:page] || 1).per(5)
