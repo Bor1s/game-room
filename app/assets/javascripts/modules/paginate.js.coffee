@@ -5,13 +5,15 @@ angular.module('paginate', []).
     @init = (resource, root_key, successCallback)=>
       @resource = resource
       @root_key = root_key
-      @page = 1
+      @defaultPage = 1
+      @currentPage = 1
       @successCallback = successCallback || ->
       @
 
     # Ask Resource to fetch it's entries from the server.
     # On success - write entries in callback
     @getPage = (pageNumber)->
-      @resource.query({page: pageNumber || @page}, (data)=>
+      @currentPage = pageNumber
+      @resource.query({page: pageNumber || @defaultPage}, (data)=>
         @successCallback(data[@root_key], data.total)
       )
