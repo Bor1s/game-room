@@ -1,17 +1,15 @@
 GameRoom::Application.routes.draw do
-  get '/home' => 'application#home'
+  get '/sign_in' => 'application#sign_in'
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/failure', to: 'sessions#failure'
   get '/signout', to: 'sessions#destroy', as: :signout
 
   namespace :rest do
-    constraints format: :json do
-      resources :rooms
-      get 'users', to: 'users#get_current_user'
-    end
+    resources :rooms
+    get 'users', to: 'users#get_current_user'
   end
 
-  root 'application#home'
+  root 'rest/dashboard#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
