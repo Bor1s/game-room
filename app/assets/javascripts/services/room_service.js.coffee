@@ -8,5 +8,9 @@ angular.module('roomService', ['ngResource']).
         method: "GET"
         params: {id: '@id'}
         isArray: false
+      update:
+        method: 'PUT'
+        params: {id: '@id'}
+        isArray: false
     )
 

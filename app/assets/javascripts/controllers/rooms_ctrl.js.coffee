@@ -1,4 +1,4 @@
-@RoomsCtrl = ($scope, $http, Room, Paginator) ->
+@RoomsCtrl = ['$scope', '$http', 'Room', 'Paginator', ($scope, $http, Room, Paginator) ->
   # Init paginator
   $scope.paginator = Paginator.init Room, 'rooms', (data, totalPages)->
     $scope.rooms = data
@@ -33,3 +33,4 @@
       Room.remove({id: id}, (data)->
         $scope.paginator.getPage(1)
       )
+]

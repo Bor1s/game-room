@@ -1,11 +1,13 @@
 <div class='room' ng-repeat='room in rooms'>
   <h2>{{room.title}}</h2>
-  <p class='text-muted'><small>By {{room.owner.name}}</small></p>
-  <p>{{room.description}}</p>
   <p ng-show='room.owned'>
-    <%= button_tag 'Remove', 'ng-click' => 'drop(room._id)', class: 'btn btn-danger' %>
+    <%= button_tag 'Remove', 'ng-click' => 'drop(room._id)', class: 'btn btn-xs btn-danger' %>
+    <%= link_to content_tag(:i, '', class: 'icon-pencil'), "#/rooms/{{room._id}}/edit" %>
   </p>
   <p ng-show='!room.owned'>
-    <%= button_tag 'Subscribe', 'ng-click' => '', class: 'btn btn-success' %>
+    <%= button_tag 'Subscribe', 'ng-click' => '', class: 'btn btn-xs btn-success' %>
   </p>
+
+  <p class='text-muted'><small>By {{room.owner.name}}</small></p>
+  <p>{{room.description}}</p>
 </div>

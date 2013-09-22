@@ -5,7 +5,9 @@ GameRoom::Application.routes.draw do
   get '/signout', to: 'sessions#destroy', as: :signout
 
   namespace :rest do
-    resources :rooms
+    resources :rooms do
+      get 'edit', to: 'rooms#edit', on: :collection
+    end
     get 'users', to: 'users#get_current_user'
   end
 

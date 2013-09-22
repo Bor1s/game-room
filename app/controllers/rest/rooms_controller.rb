@@ -25,6 +25,9 @@ class Rest::RoomsController < ApplicationController
   end
 
   def update
+    room = Room.find(params[:id])
+    room.update_attributes(room_params)
+    respond_with room
   end
 
   def destroy

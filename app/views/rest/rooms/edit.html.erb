@@ -1,3 +1,35 @@
-<div>
-  Hello world
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8'>
+
+      <%= form_tag '', class: 'form-horizontal', role: 'form' do %>
+        <%= field_set_tag 'Edit the room' do %>
+          <div class="form-group">
+            <%= label_tag 'name', 'Name', class: 'col-lg-2 control-label' %>
+            <div class="col-lg-10">
+              <%= text_field_tag 'Name', '{{room.title}}',
+                id: 'name', class: 'form-control',
+                placeholer: 'Room name', 'ng-model' => 'room.title' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= label_tag 'description', 'Description', class: 'col-lg-2 control-label' %>
+            <div class="col-lg-10">
+              <%= text_area_tag 'Description', '{{room.description}}',
+                id: 'description', class: 'form-control',
+                placeholer: 'What is this room about?',
+                size: '10x10', 'ng-model' => 'room.description' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg-offset-2 col-lg-10">
+              <%= button_tag 'Update', class: 'btn btn-default', 'ng-click' => 'update(room._id)' %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
 </div>
