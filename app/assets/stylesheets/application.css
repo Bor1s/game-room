@@ -12,4 +12,8 @@
  *= require_tree .
  */
 
-body { padding-bottom: 70px; }
+body {
+  padding-bottom: 70px;
+  font-family: 'Ubuntu', sans-serif !important;
+}
+

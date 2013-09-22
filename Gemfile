@@ -31,6 +31,7 @@ gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-vkontakte', '~> 1.2.0'
 gem 'cancan'
 gem 'angularjs-rails'
+gem 'kaminari'
 
 group :test, :development do
   gem 'thin'

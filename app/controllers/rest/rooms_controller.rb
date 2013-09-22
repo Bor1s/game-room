@@ -3,7 +3,10 @@ class Rest::RoomsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Room.all
+    rooms = Room.desc(:updated_at).page(params[:page] || 1).per(5)
+    decorator = RoomOwnership.new(rooms, current_user)
+    r = { rooms: decorator.rooms, total: rooms.total_pages }
+    respond_with r
   end
 
   def show

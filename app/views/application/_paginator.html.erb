@@ -1,0 +1,5 @@
+<ul class='pagination pagination-sm' ng-show='totalPages'>
+  <li ng-class='{active: n == paginator.currentPage}' ng-repeat='n in totalPages'>
+    <a ng-click="visitPage(n)">{{n}}</a>
+  </li>
+</ul>

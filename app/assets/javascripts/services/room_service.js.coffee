@@ -3,7 +3,7 @@ angular.module('roomService', ['ngResource']).
     $resource('/rest/rooms/:id', {format: 'json'},
       query:
         method: "GET"
-        isArray: true
+        isArray: false
       get:
         method: "GET"
         params: {id: '@id'}
