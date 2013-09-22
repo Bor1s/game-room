@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<%= render 'navigation_bar' if user_signed_in? %>
 <%= yield %>
 
 </body>
