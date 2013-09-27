@@ -16,7 +16,7 @@
           <%= label_tag 'description' %>
           <%= text_area_tag 'Description', '', id: 'description', class: 'form-control', rows: 3, placeholder: 'Room description', 'ng-model' => 'room.description' %>
         </div>
-        <%= button_tag 'Create Room', class: 'btn btn-primary', 'ng-click' => 'create()' %>
+        <%= button_tag 'Create Room', class: 'btn btn-danger btn-xs', 'ng-click' => 'create()' %>
       <% end %>
     </div>
   </div>
