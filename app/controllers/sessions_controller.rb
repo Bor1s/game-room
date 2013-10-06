@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token #Stub for developer
+
   def create
     @user = User.find_or_create_by_auth_hash(auth_hash)
     session[:user_id] = @user.id

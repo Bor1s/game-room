@@ -1,4 +1,5 @@
 class User
+  ROLES = { owner: 1, player: 2 }
   include Mongoid::Document
   field :uid, type: String
   field :name, type: String

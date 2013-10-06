@@ -1,20 +1,22 @@
 <div class='room' ng-repeat='room in rooms'>
   <div class='row'>
     <div class='col-md-10 room-title'>
-      {{room.title}}
+      <%= link_to "{{room.title}}", "#/rooms/{{room._id}}" %>
     </div>
 
     <div class='col-md-2 actions'>
       <p ng-show='room.owned'>
-        <i class='icon-trash' ng-click='drop(room._id)'></i>
-        <%= link_to content_tag(:i, '', class: 'icon-pencil'), "#/rooms/{{room._id}}/edit" %>
+        <i class='icon-trash icon-large' ng-click='drop(room._id)'></i>
+        <%= link_to content_tag(:i, '', class: 'icon-pencil icon-large'), "#/rooms/{{room._id}}/edit" %>
       </p>
       <p ng-show='!room.owned'>
-        <i class='icon-signin' ng-click=''></i>
+        <%= link_to content_tag(:i, '', class: 'icon-signin  icon-large'), "#/rooms/{{room._id}}" %>
       </p>
     </div>
   </div>
 
-  <p class='text-muted'><small>By {{room.owner.name}}</small></p>
+  <p class='text-muted'>
+    <small>By {{room.owner.name}}</small>
+  </p>
   <p>{{room.description}}</p>
 </div>

@@ -1,7 +1,6 @@
 class Rest::RoomsController < ApplicationController
   layout false
   before_action :authenticate
-  skip_before_action :verify_authenticity_token
   respond_to :html, :json
 
   def index
@@ -13,13 +12,29 @@ class Rest::RoomsController < ApplicationController
 
   def show
     room = Room.where(id: params[:id]).first
-    respond_with room
+    if room
+      decorator = RoomOwnership.new(room, current_user)
+      r = { room: decorator.room, players: room.players, total_players: room.subscriptions.count }
+      respond_with r
+    end
+  end
+
+  def join
+    room = Room.where(id: params[:id]).first
+    result = room.subscribe current_user, :player
+    head :created
+  end
+
+  def leave
+    room = Room.where(id: params[:id]).first
+    result = room.leave current_user
+    head :ok
   end
 
   def create
     room = Room.create(room_params)
     if room.valid?
-      room.subscribe(current_user)
+      room.subscribe(current_user, :owner)
     end
     respond_with room, location: rest_room_url(room)
   end

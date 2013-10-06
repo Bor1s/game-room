@@ -1,12 +1,16 @@
 GameRoom::Application.routes.draw do
   get '/sign_in' => 'application#sign_in'
   get '/auth/:provider/callback', to: 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create' #Stub
   get '/auth/failure', to: 'sessions#failure'
   get '/signout', to: 'sessions#destroy', as: :signout
 
   namespace :rest do
     resources :rooms do
+      get 'show', to: 'rooms#show', on: :collection
       get 'edit', to: 'rooms#edit', on: :collection
+      put 'join', to: 'rooms#join', on: :member
+      put 'leave', to: 'rooms#leave', on: :member
     end
     get 'users', to: 'users#get_current_user'
   end
