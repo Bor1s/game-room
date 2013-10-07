@@ -11,8 +11,8 @@
     <div class='col-md-4 management-panel'>
       <p>Total Players: {{totalPlayers}}</p>
       <p ng-show='!room.owned'>
-        <%= button_tag 'Join', class: 'btn btn-danger btn-xs', :'ng-click' => 'join(room._id)', :'ng-hide' => 'joined' %>
-        <%= button_tag 'Leave', class: 'btn btn-danger btn-xs', :'ng-click' => 'leave(room._id)', :'ng-show' => 'joined' %>
+        <%= button_tag 'Join', class: 'btn btn-success', :'ng-click' => 'join(room._id)', :'ng-hide' => 'joined' %>
+        <%= button_tag 'Leave', class: 'btn btn-danger', :'ng-click' => 'leave(room._id)', :'ng-show' => 'joined' %>
       </p>
     </div>
   </div>

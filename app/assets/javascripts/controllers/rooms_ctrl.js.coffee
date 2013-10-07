@@ -8,7 +8,7 @@
     $scope.paginator.getPage(pageNumber)
 
   # Fetch current user
-  $http({method: 'GET', url: '/rest/users'})
+  $http({method: 'GET', url: '/rest/users.json'})
     .success (data)->
       $scope.currentUser = data
       $scope.paginator.getPage(1)

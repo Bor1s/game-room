@@ -4,6 +4,7 @@ class Rest::RoomsController < ApplicationController
   respond_to :html, :json
 
   def index
+    authorize! :read, Room
     rooms = Room.desc(:updated_at).page(params[:page] || 1).per(5)
     decorator = RoomOwnership.new(rooms, current_user)
     r = { rooms: decorator.rooms, total: rooms.total_pages }
@@ -14,9 +15,20 @@ class Rest::RoomsController < ApplicationController
     room = Room.where(id: params[:id]).first
     if room
       decorator = RoomOwnership.new(room, current_user)
-      r = { room: decorator.room, players: room.players, total_players: room.subscriptions.count }
+      r = { room: decorator.room,
+            owned: decorator.room[:owned],
+            joined: decorator.room[:joined],
+            players: room.players,
+            total_players: room.subscriptions.count
+      }
       respond_with r
     end
+  end
+
+  def edit
+    room = Room.where(id: params[:id]).first
+    authorize! :manage, room
+    respond_with room
   end
 
   def join
@@ -41,12 +53,14 @@ class Rest::RoomsController < ApplicationController
 
   def update
     room = Room.find(params[:id])
+    authorize! :manage, room
     room.update_attributes(room_params)
     respond_with room
   end
 
   def destroy
     room = Room.where(id: params[:id]).first
+    authorize! :manage, room
     room.destroy
     respond_with room
   end

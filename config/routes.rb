@@ -7,8 +7,6 @@ GameRoom::Application.routes.draw do
 
   namespace :rest do
     resources :rooms do
-      get 'show', to: 'rooms#show', on: :collection
-      get 'edit', to: 'rooms#edit', on: :collection
       put 'join', to: 'rooms#join', on: :member
       put 'leave', to: 'rooms#leave', on: :member
     end

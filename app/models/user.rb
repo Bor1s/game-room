@@ -14,4 +14,12 @@ class User
       User.create(uid: auth_hash[:uid], name: auth_hash[:info][:first_name])
     end
   end
+
+  def owner? room
+    subscriptions.where(room_id: room.id, user_role: User::ROLES[:owner]).first.present?
+  end
+
+  def player? room
+    subscriptions.where(room_id: room.id, user_role: User::ROLES[:player]).first.present?
+  end
 end

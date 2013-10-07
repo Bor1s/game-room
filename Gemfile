@@ -26,11 +26,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'mongoid', github: 'mongoid/mongoid'
-gem 'angularjs-rails'
+gem "angularjs-rails", "~> 1.2.0.rc2"
 gem 'omniauth', '~> 1.1.4'
 gem 'omniauth-vkontakte', '~> 1.2.0'
 gem 'cancan'
-gem 'angularjs-rails'
 gem 'kaminari'
 
 group :test, :development do

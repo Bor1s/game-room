@@ -1,6 +1,6 @@
 @EditRoomCtrl = ['$scope', '$http', '$location', 'Room', '$routeParams', ($scope, $http, $location, Room, $routeParams) ->
-  Room.get id: $routeParams.id, (data)->
-    $scope.room = data.room
+  Room.edit id: $routeParams.id, (data)->
+    $scope.room = data
 
   $scope.update = (id)->
     # Removing optional [owner, owned, joined] keys from object

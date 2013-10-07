@@ -30,11 +30,11 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     can :manage, Room do |room|
-      room.user_id == user.id and user.master?
+      user.owner? room
     end
 
     can :read, Room do |room|
-      room.user_id == user.id and user.roommate?
+      user.player? room
     end
   end
 end
