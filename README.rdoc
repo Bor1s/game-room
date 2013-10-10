@@ -1,2 +1,2 @@
 == Code climate
-{<img src="https://codeclimate.com/github/rails/rails.png" />}[https://codeclimate.com/github/rails/rails]
+{<img src="https://codeclimate.com/repos/525662b356b10258e204e905/badges/ce0c45cb6a543332155a/gpa.png" />}[https://codeclimate.com/repos/525662b356b10258e204e905/feed]
