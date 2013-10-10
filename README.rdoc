@@ -1,2 +1,2 @@
 == Code climate
-[![Code Climate](https://codeclimate.com/github/rails/rails.png)](https://codeclimate.com/github/rails/rails)
+{<img src="https://codeclimate.com/github/rails/rails.png" />}[https://codeclimate.com/github/rails/rails]
