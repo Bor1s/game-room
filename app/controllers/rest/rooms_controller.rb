@@ -7,22 +7,18 @@ class Rest::RoomsController < ApplicationController
     authorize! :read, Room
     rooms = Room.desc(:updated_at).page(params[:page] || 1).per(5)
     decorator = RoomOwnership.new(rooms, current_user)
-    r = { rooms: decorator.rooms, total: rooms.total_pages }
-    respond_with r
+    respond_with({ rooms: decorator.rooms, total: rooms.total_pages })
   end
 
   def show
-    room = Room.where(id: params[:id]).first
-    if room
-      decorator = RoomOwnership.new(room, current_user)
-      r = { room: decorator.room,
-            owned: decorator.room[:owned],
-            joined: decorator.room[:joined],
-            players: room.players,
-            total_players: room.subscriptions.count
-      }
-      respond_with r
-    end
+    room = Room.find(params[:id])
+    decorator = RoomOwnership.new(room, current_user)
+    respond_with({ room: decorator.room,
+          owned: decorator.room[:owned],
+          joined: decorator.room[:joined],
+          players: room.players,
+          total_players: room.subscriptions.count
+    })
   end
 
   def edit

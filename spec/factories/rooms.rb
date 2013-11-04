@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :room do
-    title "MyString"
-    description "MyText"
+    title "HQ II"
+    description "Survival horror"
   end
 end

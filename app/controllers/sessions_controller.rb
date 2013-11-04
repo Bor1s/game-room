@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :verify_authenticity_token #Stub for developer
+  skip_before_filter :verify_authenticity_token #NOTE: Stub for developer
 
   def create
     @user = User.find_or_create_by_auth_hash(auth_hash)

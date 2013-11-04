@@ -14,6 +14,8 @@ GameRoom::Application.routes.draw do
   end
 
   root 'rest/dashboard#index'
+
+  get '*path', to: 'application#routing_error_handler'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

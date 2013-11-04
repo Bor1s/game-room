@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :user do
+    name 'Boris'
+    uid  '12345'
   end
 end

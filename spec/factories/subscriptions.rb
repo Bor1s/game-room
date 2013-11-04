@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :subscription do
-    user_id "MyString"
-    room_id "MyString"
-    role 1
+    user
+    room
+    user_role 1
   end
 end
