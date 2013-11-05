@@ -74,4 +74,32 @@ describe Rest::RoomsController do
       response.status.should be 422
     end
   end
+
+  context 'PUT update' do
+    it 'responds with 204' do
+      put :update, {id: subscription.room.id,
+                     room: {title: 'Foobar'},
+                     format: :json}
+      response.status.should be 204
+    end
+
+    it 'responds with 422' do
+      put :update, {id: subscription.room.id,
+                     room: {title: ''},
+                     format: :json}
+      response.status.should be 422
+    end
+  end
+
+  context 'DELETE destroy' do
+    it 'responds with 200' do
+      delete :destroy, id: subscription.room.id
+      response.status.should be 200
+    end
+
+    it 'responds with 404' do
+      delete :destroy, id: 'unexisting'
+      response.status.should be 404
+    end
+  end
 end

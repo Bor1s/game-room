@@ -59,10 +59,10 @@ class Rest::RoomsController < ApplicationController
   end
 
   def destroy
-    room = Room.where(id: params[:id]).first
+    room = Room.find(params[:id])
     authorize! :manage, room
     room.destroy
-    respond_with room
+    head :ok
   end
 
   private
