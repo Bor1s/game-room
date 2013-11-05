@@ -5,6 +5,9 @@ class Room
   field :title, type: String
   field :description, type: String
 
+  validates :title, presence: true
+  validates :description, presence: true
+
   has_many :subscriptions, dependent: :destroy
 
   def subscribe user, role=:player

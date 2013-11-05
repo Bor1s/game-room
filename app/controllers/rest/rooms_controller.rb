@@ -6,8 +6,12 @@ class Rest::RoomsController < ApplicationController
   def index
     authorize! :read, Room
     rooms = Room.desc(:updated_at).page(params[:page] || 1).per(5)
-    decorator = RoomOwnership.new(rooms, current_user)
-    respond_with({ rooms: decorator.rooms, total: rooms.total_pages })
+    if rooms.empty?
+      respond_with({ success: false, message: 'Not found!' }, status: 404)
+    else
+      decorator = RoomOwnership.new(rooms, current_user)
+      respond_with({ rooms: decorator.rooms, total: rooms.total_pages })
+    end
   end
 
   def show
@@ -22,19 +26,19 @@ class Rest::RoomsController < ApplicationController
   end
 
   def edit
-    room = Room.where(id: params[:id]).first
+    room = Room.find(params[:id])
     authorize! :manage, room
     respond_with room
   end
 
   def join
-    room = Room.where(id: params[:id]).first
+    room = Room.find(params[:id])
     result = room.subscribe current_user, :player
     head :created
   end
 
   def leave
-    room = Room.where(id: params[:id]).first
+    room = Room.find(params[:id])
     result = room.leave current_user
     head :ok
   end
