@@ -6,13 +6,39 @@
         <small>By {{room.owner.name}}</small>
       </p>
       <p>{{room.description}}</p>
+      <div class='posts'>
+        <p class='posts-header'>
+          Game board
+        </p>
+        <div class='post' ng-repeat='post in room.posts'>
+          <p>{{post.text}}</p>
+        </div>
+
+        <%= form_tag '', class: 'form-horizontal', role: 'form' do %>
+          <div class="form-group">
+            <div class="col-lg-10">
+              <%= text_area_tag 'text', '{{post.text}}',
+                id: 'text', class: 'form-control',
+                placeholer: "I'm going to ...",
+                size: '10x10', 'ng-model' => 'post.text' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-lg col-lg-10">
+              <%= button_tag 'Answer', class: 'btn btn-success', 'ng-click' => 'createPost(room._id)' %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
     </div>
 
     <div class='col-md-4 management-panel'>
       <p>Total Players: {{totalPlayers}}</p>
       <p ng-show='!room.owned'>
         <%= button_tag 'Join', class: 'btn btn-success', :'ng-click' => 'join(room._id)', :'ng-hide' => 'joined' %>
-        <%= button_tag 'Leave', class: 'btn btn-danger', :'ng-click' => 'leave(room._id)', :'ng-show' => 'joined' %>
+        <%= button_tag 'Leave', class: 'btn btn-danger', :'ng-click' => 'redeem(room._id)', :'ng-show' => 'joined' %>
       </p>
     </div>
   </div>

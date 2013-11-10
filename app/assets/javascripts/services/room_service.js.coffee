@@ -24,11 +24,11 @@ angular.module('roomService', ['ngResource']).
           id: '@id'
           action: 'join'
         isArray: false
-      leave:
+      redeem:
         method: 'PUT'
         params:
           id: '@id'
-          action: 'leave'
+          action: 'redeem'
         isArray: false
     )
 

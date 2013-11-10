@@ -37,9 +37,9 @@ class Rest::RoomsController < ApplicationController
     head :created
   end
 
-  def leave
+  def redeem
     room = Room.find(params[:id])
-    result = room.leave current_user
+    result = room.redeem current_user
     head :ok
   end
 

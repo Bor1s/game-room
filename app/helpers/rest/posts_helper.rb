@@ -1,0 +1,2 @@
+module Rest::PostsHelper
+end

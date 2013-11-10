@@ -1,4 +1,4 @@
-angular.module('main', ['roomService', 'paginate', 'ngRoute']).config(['$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
+angular.module('main', ['roomService', 'postService', 'paginate', 'ngRoute']).config(['$routeProvider', '$httpProvider', ($routeProvider, $httpProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   $routeProvider
     .when('/', {templateUrl: '/rest/rooms.html', controller: RoomsCtrl})

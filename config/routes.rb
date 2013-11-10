@@ -8,9 +8,11 @@ GameRoom::Application.routes.draw do
   namespace :rest do
     resources :rooms do
       put 'join', to: 'rooms#join', on: :member
-      put 'leave', to: 'rooms#leave', on: :member
+      put 'redeem', to: 'rooms#redeem', on: :member
     end
     get 'users', to: 'users#get_current_user'
+
+    resources :posts, only: [:create, :update, :destroy]
   end
 
   root 'rest/dashboard#index'

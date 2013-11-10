@@ -51,14 +51,14 @@ describe Rest::RoomsController do
     end
   end
 
-  context 'PUT leave' do
+  context 'PUT redeem' do
     it 'responds with 200' do
-      put :leave, id: subscription.room.id, format: :json
+      put :redeem, id: subscription.room.id, format: :json
       response.status.should be 200
     end
 
     it 'responds with 404' do
-      put :leave, id: 'unexisting', format: :json
+      put :redeem, id: 'unexisting', format: :json
       response.status.should be 404
     end
   end

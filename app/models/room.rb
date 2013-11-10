@@ -9,6 +9,7 @@ class Room
   validates :description, presence: true
 
   has_many :subscriptions, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   def subscribe user, role=:player
     unless subscribed? user
@@ -16,7 +17,7 @@ class Room
     end
   end
 
-  def leave user
+  def redeem user
     _subscription = subscriptions.where(user_id: user.id).first
     subscriptions.delete _subscription
   end
@@ -32,7 +33,7 @@ class Room
 
   # Include room owner
   def serializable_hash(options={})
-    super.merge!({owner: owner})
+    super.merge!({owner: owner, posts: posts})
   end
 
   def subscribed? user
