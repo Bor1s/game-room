@@ -17,3 +17,5 @@ angular.module('paginate', []).
       @resource.query({page: pageNumber || @defaultPage}, (data)=>
         @successCallback(data[@root_key], data.total)
       )
+    #Return self
+    @

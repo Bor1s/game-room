@@ -8,6 +8,11 @@
     delete $scope.room.owner
     delete $scope.room.joined
 
-    Room.update id: id, room: $scope.room, (data)->
-      $location.path('/')
+    Room.update
+      id: id
+      room:
+        title: $scope.room.title
+        description: $scope.room.description
+      (data)->
+        $location.path('/')
 ]

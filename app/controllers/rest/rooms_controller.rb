@@ -48,7 +48,7 @@ class Rest::RoomsController < ApplicationController
     if room.valid?
       room.subscribe(current_user, :owner)
     end
-    respond_with room, location: rest_room_url(room)
+    respond_with :rest, room
   end
 
   def update

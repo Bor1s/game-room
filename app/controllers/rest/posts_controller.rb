@@ -5,7 +5,7 @@ class Rest::PostsController < ApplicationController
 
   def create
     post = @room.posts.create(post_params)
-    post.user = current_user
+    post.update_attribute :user_id, current_user.id
     respond_with :rest, post
   end
 
